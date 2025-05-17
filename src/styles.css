@@ -1,5 +1,89 @@
-/* styles.css */
+* {
+    padding: unset;
+    margin: unset;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: rebeccapurple;
-  }
-  
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+
+/*Inherit fonts for form controls*/
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+header{
+    text-align: center;
+    padding: .5em;
+    border-bottom: #2b2a2a solid 1px;
+
+}
+
+main{
+    display: grid;
+    grid-template-columns: .5fr 4fr;
+    height: calc(100% - 70px);
+}
+
+aside{
+    padding: .5em 1em;
+    border-right: 1px solid #2b2a2a;
+}
+
+#to-do-container{
+    padding: .5em 1em;
+}
+
+#sidebar-header,
+#to-do-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+#create-project-btn{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: unset;
+    font-size: 1.5em;
+    /*Center "+" */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
