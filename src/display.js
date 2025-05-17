@@ -2,6 +2,14 @@ import { listOfProjects } from "./projects";
 
 
 const displayProjectsAndTasks = (function(){
+    const addProjectButton = document.querySelector('#create-project-btn').addEventListener('click', () =>{
+        createProjectDialog.showModal();
+    });
+    const closeProjectDialog = document.querySelector('#close-project-modal-btn').addEventListener('click', () =>{
+        createProjectDialog.close();
+    })
+    
+    const createProjectDialog = document.querySelector('#create-project-modal');
 
     const displayProjects = function(listOfProjects){
    
@@ -13,6 +21,7 @@ const displayProjectsAndTasks = (function(){
             // create new li & button
             const li = document.createElement('li');
             const button = document.createElement('button');
+            button.classList.add('project-button');
             li.appendChild(button);
             button.textContent = project.name;
             // append to container
@@ -20,6 +29,9 @@ const displayProjectsAndTasks = (function(){
      
         });
     }
+   
+
+        
     displayProjects(listOfProjects);
 })();
 

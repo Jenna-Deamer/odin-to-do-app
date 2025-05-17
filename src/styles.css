@@ -48,42 +48,98 @@ h6 {
     text-wrap: balance;
 }
 
-header{
+.active {
+    background-color: rgb(89, 15, 112);
+    color: #fff;
+}
+
+header {
     text-align: center;
     padding: .5em;
     border-bottom: #2b2a2a solid 1px;
 
 }
 
-main{
+main {
     display: grid;
     grid-template-columns: .5fr 4fr;
     height: calc(100% - 70px);
 }
 
-aside{
+aside {
     padding: .5em 1em;
     border-right: 1px solid #2b2a2a;
 }
 
-#to-do-container{
+#to-do-container {
     padding: .5em 1em;
 }
 
 #sidebar-header,
-#to-do-header{
+#to-do-header {
     display: flex;
     justify-content: space-between;
 }
 
-#create-project-btn{
+#sidebar-header h2 {
+    margin-right: 1em;
+}
+
+#create-project-btn {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    border: unset;
+    border: none;
     font-size: 1.5em;
     /*Center "+" */
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#projects-list {
+    margin-top: 1em;
+
+}
+
+#projects-list li {
+    list-style: none;
+    margin-top: 1em;
+}
+
+.project-button {
+    width: 100%;
+    border: none;
+    text-align: left;
+    border-radius: 8px;
+    background-color: transparent;
+    padding: .2em 1em;
+}
+
+dialog {
+    margin: auto;
+    padding: 1em;
+}
+
+dialog h2 {
+    margin-bottom: .5em;
+}
+
+#modal-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#modal-button-container button {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: none;
+    background-color: rgb(14, 4, 145);
+    color: #fff;
+    transition: .2s ease-in-out;
+}
+
+#modal-button-container button:hover {
+    background-color: rgb(12, 6, 100);
 }
