@@ -47,7 +47,10 @@ h5,
 h6 {
     text-wrap: balance;
 }
-
+button{
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
 .active {
     background-color: rgb(89, 15, 112);
     color: #fff;
@@ -71,12 +74,12 @@ aside {
     border-right: 1px solid #2b2a2a;
 }
 
-#to-do-container {
+#task-container {
     padding: .5em 1em;
 }
 
 #sidebar-header,
-#to-do-header {
+#task-header {
     display: flex;
     justify-content: space-between;
 }
@@ -115,7 +118,9 @@ aside {
     background-color: transparent;
     padding: .2em 1em;
 }
-
+.project-button:hover{
+    background-color: #f1f1f1;
+}
 dialog {
     margin: auto;
     padding: 1em;
@@ -135,7 +140,6 @@ dialog form{
     border: none;
     background-color: rgb(14, 4, 145);
     color: #fff;
-    transition: .2s ease-in-out;
 }
 
 #modal-button-container button:hover {

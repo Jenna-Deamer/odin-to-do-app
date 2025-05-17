@@ -22,6 +22,8 @@ const displayProjectsAndTasks = (function () {
             displayProjects(listOfProjects);
             // close modal
             createProjectDialog.close();
+            // clear input for next time
+            projectNameField.value = "";
         }
 
     });
@@ -51,6 +53,13 @@ const displayProjectsAndTasks = (function () {
     }
 
 
+    const displayTasks = (selectedProject) => {
+        const taskContainer = document.querySelector('#task-container');
+        
+        selectedProject.forEach(task => {
+            
+        });
+    }
 
     displayProjects(listOfProjects);
 })();
