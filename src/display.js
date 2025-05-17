@@ -1,18 +1,39 @@
 import { listOfProjects } from "./projects";
+import {project} from "./projects"
 
+const displayProjectsAndTasks = (function () {
+    const createProjectDialog = document.querySelector('#create-project-modal');
+    const formInfoLabel = document.querySelector('.info-label');
+    const projectNameField = document.querySelector('#project-name');
+    document.querySelector('#create-project-modal form').addEventListener("submit", function (event) {
+        event.preventDefault();
 
-const displayProjectsAndTasks = (function(){
-    const addProjectButton = document.querySelector('#create-project-btn').addEventListener('click', () =>{
+        // verify form data
+        if (!projectNameField.value) {
+            formInfoLabel.textContent = "Please enter a name";
+        }
+        else {
+            // create project
+            let name = projectNameField.value;
+            const newProject = project.createProject(name);
+            // add project
+            project.addProjectToListOfProjects(newProject);
+            // re-render project list
+            displayProjects(listOfProjects);
+            // close modal
+            createProjectDialog.close();
+        }
+
+    });
+    document.querySelector('#create-project-btn').addEventListener('click', () => {
         createProjectDialog.showModal();
     });
-    const closeProjectDialog = document.querySelector('#close-project-modal-btn').addEventListener('click', () =>{
+    document.querySelector('#close-project-modal-btn').addEventListener('click', () => {
         createProjectDialog.close();
     })
-    
-    const createProjectDialog = document.querySelector('#create-project-modal');
 
-    const displayProjects = function(listOfProjects){
-   
+    const displayProjects = (listOfProjects)  => {
+
         const projectContainer = document.querySelector('#projects-list');
         // Reset to avoid duplication of content
         projectContainer.textContent = "";
@@ -26,13 +47,12 @@ const displayProjectsAndTasks = (function(){
             button.textContent = project.name;
             // append to container
             projectContainer.appendChild(li);
-     
         });
     }
-   
 
-        
+
+
     displayProjects(listOfProjects);
 })();
 
-export {displayProjectsAndTasks};
+export { displayProjectsAndTasks };

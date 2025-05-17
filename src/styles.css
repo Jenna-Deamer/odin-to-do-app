@@ -120,11 +120,9 @@ dialog {
     margin: auto;
     padding: 1em;
 }
-
-dialog h2 {
-    margin-bottom: .5em;
+dialog form{
+    margin-top: 1em;
 }
-
 #modal-button-container {
     display: flex;
     justify-content: flex-end;
@@ -142,4 +140,12 @@ dialog h2 {
 
 #modal-button-container button:hover {
     background-color: rgb(12, 6, 100);
+}
+
+.info-label{
+    color:  rgb(161, 33, 33);
+}
+.submit-btn{
+    margin-top: .5em;
+    width: 100px;
 }
