@@ -1,5 +1,5 @@
 import { listOfProjects } from "./projects";
-import {project} from "./projects"
+import { project } from "./projects"
 
 const displayProjectsAndTasks = (function () {
     const createProjectDialog = document.querySelector('#create-project-modal');
@@ -21,7 +21,7 @@ const displayProjectsAndTasks = (function () {
             // re-render project list
             displayProjects(listOfProjects);
             // attach event-listeners
-            attachProjectButtonEventLIsteners();
+            attachProjectButtonEventLIsteners(activeButton);
             // close modal
             createProjectDialog.close();
             // clear input for next time
@@ -36,7 +36,7 @@ const displayProjectsAndTasks = (function () {
         createProjectDialog.close();
     })
 
-    const displayProjects = (listOfProjects)  => {
+    const displayProjects = (listOfProjects) => {
 
         const projectContainer = document.querySelector('#projects-list');
         // Reset to avoid duplication of content
@@ -55,31 +55,47 @@ const displayProjectsAndTasks = (function () {
         });
     }
 
-    const attachProjectButtonEventLIsteners = () => {
+    const attachProjectButtonEventLIsteners = (activeButton) => {
         const projectButtons = document.querySelectorAll('.project-button');
         projectButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const id= button.parentNode.id;
+                const id = button.parentNode.id;
+                // Switch Active class 
+                if (activeButton) {
+                    activeButton.classList.remove('active');
+                }
+                button.classList.add('active');
+                activeButton = button;
                 // Find project with id in list & set selectedProject
                 const index = listOfProjects.findIndex((button) => button.id === id);
                 const selectedProject = listOfProjects[index];
                 console.log(selectedProject);
-               
+
             })
         });
     }
 
+    const setFirstProjectInListToActive = () => {
+        const projectButtons = document.querySelectorAll('.project-button');
+        projectButtons[0].classList.add('active');
+        let activeButton = projectButtons[0];
+        console.log(activeButton);
+        return { activeButton };
+
+
+    }
     const displayTasks = (selectedProject) => {
         const taskContainer = document.querySelector('#task-container');
-        
+
         selectedProject.forEach(task => {
-            
+
         });
     }
 
     displayProjects(listOfProjects);
-    attachProjectButtonEventLIsteners();
-  
+    setFirstProjectInListToActive();
+    attachProjectButtonEventLIsteners(activeButton);
+
 })();
 
 export { displayProjectsAndTasks };

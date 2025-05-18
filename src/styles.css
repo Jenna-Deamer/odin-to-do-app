@@ -52,7 +52,7 @@ button{
     cursor: pointer;
 }
 .active {
-    background-color: rgb(89, 15, 112);
+    background-color: rgb(89, 15, 112) !important;  
     color: #fff;
 }
 

@@ -17,16 +17,13 @@ const project = (function () {
     const addProjectToListOfProjects = (newProject) => {
         listOfProjects.push(newProject);
     };
-
+    // Create default project for all tasks.
+    const defaultProject = createProject("All");
+    addProjectToListOfProjects(defaultProject);
+    
     // Testing
-    const testProject = createProject("Home");
     const testProject2 = createProject("Work");
 
-    testProject.addTask('Clean');
-    testProject.addTask('Eat');
-    // console.log(testProject.getTaskList());
-
-    addProjectToListOfProjects(testProject)
     addProjectToListOfProjects(testProject2)
     console.log(...listOfProjects);
 
