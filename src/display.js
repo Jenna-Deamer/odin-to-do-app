@@ -59,9 +59,11 @@ const displayProjectsAndTasks = (function () {
         const projectButtons = document.querySelectorAll('.project-button');
         projectButtons.forEach(button => {
             button.addEventListener('click', () => {
-
                 const id= button.parentNode.id;
-                console.log("Clicked Project: " + id);
+                // Find project with id in list & set selectedProject
+                const index = listOfProjects.findIndex((button) => button.id === id);
+                const selectedProject = listOfProjects[index];
+                console.log(selectedProject);
                
             })
         });
