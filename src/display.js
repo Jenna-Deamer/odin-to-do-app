@@ -20,6 +20,8 @@ const displayProjectsAndTasks = (function () {
             project.addProjectToListOfProjects(newProject);
             // re-render project list
             displayProjects(listOfProjects);
+            // attach event-listeners
+            attachProjectButtonEventLIsteners();
             // close modal
             createProjectDialog.close();
             // clear input for next time
@@ -43,6 +45,7 @@ const displayProjectsAndTasks = (function () {
 
             // create new li & button
             const li = document.createElement('li');
+            li.setAttribute('id', project.id);
             const button = document.createElement('button');
             button.classList.add('project-button');
             li.appendChild(button);
@@ -52,6 +55,17 @@ const displayProjectsAndTasks = (function () {
         });
     }
 
+    const attachProjectButtonEventLIsteners = () => {
+        const projectButtons = document.querySelectorAll('.project-button');
+        projectButtons.forEach(button => {
+            button.addEventListener('click', () => {
+
+                const id= button.parentNode.id;
+                console.log("Clicked Project: " + id);
+               
+            })
+        });
+    }
 
     const displayTasks = (selectedProject) => {
         const taskContainer = document.querySelector('#task-container');
@@ -62,6 +76,8 @@ const displayProjectsAndTasks = (function () {
     }
 
     displayProjects(listOfProjects);
+    attachProjectButtonEventLIsteners();
+  
 })();
 
 export { displayProjectsAndTasks };
