@@ -80,7 +80,7 @@ const displayProjectsAndTasks = (function () {
         projectButtons[0].classList.add('active');
         let activeButton = projectButtons[0];
         console.log(activeButton);
-        return { activeButton };
+        return activeButton;
 
 
     }
@@ -93,7 +93,8 @@ const displayProjectsAndTasks = (function () {
     }
 
     displayProjects(listOfProjects);
-    setFirstProjectInListToActive();
+    const activeButton = setFirstProjectInListToActive();
+    console.log(activeButton)
     attachProjectButtonEventLIsteners(activeButton);
 
 })();
