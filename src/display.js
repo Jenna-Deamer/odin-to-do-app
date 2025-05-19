@@ -54,6 +54,8 @@ const displayProjectsAndTasks = (function () {
     });
 
     document.querySelector('#create-task-btn').addEventListener('click', () => {
+        // reset select to avoid duplication of items
+        taskProjectNameField.textContent = "";
         // populate project dropdown with list of projects
         for(let i = 0; i < listOfProjects.length; i++){
             let projectIndex = listOfProjects[i];
