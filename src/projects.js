@@ -23,7 +23,7 @@ const project = (function () {
     
     // Testing
     const testProject2 = createProject("Work");
-
+    defaultProject.addTask("Code");
     addProjectToListOfProjects(testProject2)
     console.log(...listOfProjects);
 
