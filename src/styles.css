@@ -128,12 +128,12 @@ dialog {
 dialog form{
     margin-top: 1em;
 }
-#modal-button-container {
+.modal-button-container {
     display: flex;
     justify-content: flex-end;
 }
 
-#modal-button-container button {
+.modal-button-container button {
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -142,7 +142,7 @@ dialog form{
     color: #fff;
 }
 
-#modal-button-container button:hover {
+.modal-button-container button:hover {
     background-color: rgb(12, 6, 100);
 }
 

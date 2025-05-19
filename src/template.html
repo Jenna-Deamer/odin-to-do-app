@@ -35,7 +35,7 @@
     </main>
 
     <dialog id="create-project-modal">
-        <div id="modal-button-container">
+        <div class="modal-button-container">
             <button id="close-project-modal-btn">X</button>
         </div>
 
@@ -46,10 +46,50 @@
                 <label for="project-name">Name:</label>
                 <input type="text" id="project-name" form="project-name">
             </fieldset>
+
+            <button type="submit" class="submit-btn">Create</button>
+
+
+        </form>
+    </dialog>
+
+    <dialog id="create-task-modal">
+        <div class="modal-button-container">
+            <button id="close-task-modal-btn">X</button>
+        </div>
+
+        <h2>Create Task</h2>
+        <p class="info-label"></p>
+        <form>
+            <fieldset>
+                <label for="task-name">Name:</label>
+                <input type="text" id="task-name" form="task-name" required>
+            </fieldset>
+            <fieldset>
+                <label>Project:</label>
+                <select id="task-project-name" name="task-project-name"></select>
+            </fieldset>
+            <fieldset>
+                <label>Due Date:</label>
+                <input type="date" id="task-due-date" fom="task-due-date" required>
+            </fieldset>
+            <fieldset>
+                <label for="task-priority">Priority:</label>
+                <select id="task-priority" name="task-priority" required>
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">low</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label>Description:</label>
+                <input type="text" id="task-description" form="task-description" required>
+            </fieldset>
           
-                <button type="submit" class="submit-btn">Create</button>
-      
-           
+
+            <button type="submit" class="submit-btn">Create</button>
+
+
         </form>
     </dialog>
 

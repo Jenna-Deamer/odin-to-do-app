@@ -3,8 +3,16 @@ import { project } from "./projects"
 
 const displayProjectsAndTasks = (function () {
     const createProjectDialog = document.querySelector('#create-project-modal');
+    const createTaskDialog = document.querySelector('#create-task-modal');
     const formInfoLabel = document.querySelector('.info-label');
+    // Project form field
     const projectNameField = document.querySelector('#project-name');
+    // Task form fields
+    const taskNameFIeld = document.querySelector('#task-name');
+    const taskDueDateField = document.querySelector('#task-due-date');
+    const taskPrioryField = document.querySelector('#task-priority');
+    const taskDescriptionField = document.querySelector('#task-description');
+    const taskProjectNameField = document.querySelector('#task-project-name');
 
     // Form event listeners
     document.querySelector('#create-project-modal form').addEventListener("submit", function (event) {
@@ -31,12 +39,37 @@ const displayProjectsAndTasks = (function () {
         }
 
     });
+  
+    document.querySelector('#create-task-modal form').addEventListener("submit",function(event){
+        event.preventDefault();
+
+        
+    });
     // Modal controls
     document.querySelector('#create-project-btn').addEventListener('click', () => {
         createProjectDialog.showModal();
     });
     document.querySelector('#close-project-modal-btn').addEventListener('click', () => {
         createProjectDialog.close();
+    });
+
+    document.querySelector('#create-task-btn').addEventListener('click', () => {
+        // populate project dropdown with list of projects
+        for(let i = 0; i < listOfProjects.length; i++){
+            let projectIndex = listOfProjects[i];
+            // Create option for each item in list
+            let option = document.createElement('option');
+            option.text = projectIndex.name;
+            option.value = projectIndex.name;
+            // append to select
+            taskProjectNameField.appendChild(option);
+        };
+        // show modal
+        createTaskDialog.showModal();
+        
+    });
+    document.querySelector('#close-task-modal-btn').addEventListener('click',() =>{
+        createTaskDialog.close();
     })
 
     const initialDisplay = () => {
