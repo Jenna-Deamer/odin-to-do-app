@@ -1,4 +1,5 @@
 import { project } from "./projects";
+import { listOfProjects } from "./projects";
 
 const task = (function () {
 
@@ -19,6 +20,16 @@ const task = (function () {
             priority = newPriority;
         }
 
+        const addTaskToProject = (task) => {
+            // find project using projectName
+            const projectIndex = listOfProjects.findIndex((project) => project.name == projectName)
+            const selectedProject = listOfProjects[projectIndex];
+            // Get taskList
+            let taskList = selectedProject.getTaskList();
+            // Push task into taskList 
+            taskList.push(task);
+        }
+
         const toggleStatus = () => {
             if (isComplete) {
                 isComplete = false;
@@ -26,23 +37,20 @@ const task = (function () {
             else {
                 isComplete = true;
             }
+
+
         }
-        return { id, getProjectName, getTitle, getDescription, getDueDate, getPriority, getStatus, setDueDate, setPriority, toggleStatus };
+        return { id, getProjectName, getTitle, getDescription, getDueDate, getPriority, getStatus, setDueDate, setPriority, toggleStatus, addTaskToProject };
     }
 
     // Testing
-    let newTask = createTask("All", "Clean Again", "some cool desc", "20-10-2022", "high", false)
-    console.log(newTask)
-    console.log(newTask.getDueDate())
-    newTask.setDueDate("5/19/2025")
-    console.log(newTask.getDueDate())
+    let newTask = createTask("Work", "Code Again", "some cool desc", "20-10-2025", "high", false)
+    let newTask2 = createTask("Garden", "PLant Some Stuff", "some cool desc", "20-10-2025", "high", false)
+    let newTask3 = createTask("Work", "Code Again Again!", "some cool desc", "20-10-2025", "high", false)
 
-
-
-    console.log(newTask.getStatus())
-    newTask.getStatus()
-    newTask.toggleStatus()
-    console.log(newTask.getStatus())
+    newTask.addTaskToProject(newTask);
+    newTask2.addTaskToProject(newTask2);
+    newTask3.addTaskToProject(newTask3);
 
 })()
 

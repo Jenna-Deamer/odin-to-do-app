@@ -84,8 +84,11 @@ const displayProjectsAndTasks = (function () {
         }
         let taskList = selectedProject.getTaskList();
         console.log(taskList)
-
+        // Update title
         projectDisplayName.textContent = selectedProject.name;
+        // Create container for incomplete tasks & populate
+
+        // Create container for completed tasks & populate
     };
 
     const attachProjectButtonEventLIsteners = (activeButton) => {
