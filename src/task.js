@@ -47,7 +47,7 @@ const task = (function () {
     let newTask = createTask("Work", "Code Again", "some cool desc", "20-10-2025", "high", false)
     let newTask2 = createTask("Garden", "PLant Some Stuff", "some cool desc", "20-10-2025", "high", false)
     let newTask3 = createTask("Work", "Code Again Again!", "some cool desc", "20-10-2025", "high", false)
-
+    
     newTask.addTaskToProject(newTask);
     newTask2.addTaskToProject(newTask2);
     newTask3.addTaskToProject(newTask3);

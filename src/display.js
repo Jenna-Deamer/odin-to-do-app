@@ -18,6 +18,11 @@ const displayProjectsAndTasks = (function () {
     const taskPrioryField = document.querySelector("#task-priority");
     const taskDescriptionField = document.querySelector("#task-description");
     const taskProjectNameField = document.querySelector("#task-project-name");
+    // Task container
+    const taskContainer = document.querySelector("#task-container");
+    const projectDisplayName = document.querySelector("#current-project-label");
+    const incompleteTaskList = document.createElement('ul');
+    taskContainer.appendChild(incompleteTaskList);
 
     // Form event listeners
     document
@@ -149,16 +154,36 @@ const displayProjectsAndTasks = (function () {
     };
 
     const displayTasks = (selectedProject) => {
-        const taskContainer = document.querySelector("#task-container");
-        const projectDisplayName = document.querySelector("#current-project-label");
+        // If no selected project, set to first one in list ('All')
         if (!selectedProject) {
             selectedProject = listOfProjects[0];
         }
+        // Get current project's taskList
         let taskList = selectedProject.getTaskList();
-        console.log(taskList);
+
         // Update title
         projectDisplayName.textContent = selectedProject.name;
-        // Create container for incomplete tasks & populate
+
+        // Reset to avoid duplication
+        incompleteTaskList.innerHTML = "";
+
+        // Create task list item
+        taskList.forEach(task => {
+            const taskProjectName = task.getProjectName();
+            const taskName = task.getTitle();
+            const taskDescription = task.getDescription();
+            const taskDueDate = task.getDueDate();
+            const taskPriory = task.getPriority();
+            const taskStatus = task.getStatus();
+           
+
+            const taskItem = `<li class='task-list-item'>
+            <div class='task-main-section'><p>${taskName}</p><p>${taskDueDate}</p></div>
+             <div class='task-sub-section'></div>
+           </li>`
+
+            incompleteTaskList.innerHTML += taskItem;
+        });
 
         // Create container for completed tasks & populate
     };
