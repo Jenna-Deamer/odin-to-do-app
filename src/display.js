@@ -73,9 +73,7 @@ const displayProjectsAndTasks = (function () {
                 createTaskDialog.close();
                 // Clear inputs & label for next time
                 taskFormInfoLabel.textContent = "";
-                taskProjectNameField.value = "";
                 taskDueDateField.value = "";
-                taskPrioryField.value = "";
                 taskDescriptionField.value = "";
 
             }
