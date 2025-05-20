@@ -1,12 +1,15 @@
 import { listOfProjects } from "./projects";
 import { project } from "./projects";
+import { task } from "./task";
 
 const displayProjectsAndTasks = (function () {
-    // 
     let activeButton;
+    let selectedProject;
+    // Dialog html items
     const createProjectDialog = document.querySelector("#create-project-modal");
     const createTaskDialog = document.querySelector("#create-task-modal");
-    const formInfoLabel = document.querySelector(".info-label");
+    const projectFormInfoLabel = document.querySelector("#info-label-project");
+    const taskFormInfoLabel = document.querySelector('#info-label-task');
     // Project form field
     const projectNameField = document.querySelector("#project-name");
     // Task form fields
@@ -24,7 +27,7 @@ const displayProjectsAndTasks = (function () {
 
             // verify form data
             if (!projectNameField.value) {
-                formInfoLabel.textContent = "Please enter a name";
+                projectFormInfoLabel.textContent = "Please enter a name";
             } else {
                 // create project
                 let name = projectNameField.value;
@@ -43,8 +46,9 @@ const displayProjectsAndTasks = (function () {
                 attachProjectButtonEventListeners(activeButton);
                 // close modal
                 createProjectDialog.close();
-                // clear input for next time
+                // clear input & label for next time
                 projectNameField.value = "";
+                projectFormInfoLabel.textContent = "";
             }
         });
 
@@ -52,7 +56,31 @@ const displayProjectsAndTasks = (function () {
         .querySelector("#create-task-modal form")
         .addEventListener("submit", function (event) {
             event.preventDefault();
+
+            // validate form (if any are empty display error)
+            if (!taskNameFIeld.value || !taskProjectNameField.value || !taskDueDateField.value || !taskPrioryField.value || !taskDescriptionField.value) {
+                taskFormInfoLabel.textContent = "Please fill out all fields!";
+            }
+            else {
+                // Create the task with status set to false (incomplete task)
+                let newTask = task.createTask(taskProjectNameField.value, taskNameFIeld.value, taskDescriptionField.value, taskDueDateField.value, taskPrioryField.value, false);
+                console.log(newTask)
+                // Add task to the project's taskList
+                newTask.addTaskToProject(newTask);
+                // Display updated task container
+                displayTasks(selectedProject);
+                // Close modal
+                createTaskDialog.close();
+                // Clear inputs & label for next time
+                taskFormInfoLabel.textContent = "";
+                taskProjectNameField.value = "";
+                taskDueDateField.value = "";
+                taskPrioryField.value = "";
+                taskDescriptionField.value = "";
+
+            }
         });
+
     // Modal controls
     document
         .querySelector("#create-project-btn")
@@ -90,17 +118,17 @@ const displayProjectsAndTasks = (function () {
     const initialDisplay = () => {
         // pull projects & their tasks from local storage
 
-        // populate project list
+        // Populate project list
         displayProjects(listOfProjects);
 
         // Set first project in list to active (DefaultProject called All)
-       setFirstProjectInListToActive();
+        setFirstProjectInListToActive();
 
         // Attach event listeners
         attachProjectButtonEventListeners(activeButton);
 
-        // // populate task container
-        // displayTasks(selectedProject);
+        // Populate task container
+        displayTasks(selectedProject);
 
         // Attach event listeners
     };
@@ -149,7 +177,7 @@ const displayProjectsAndTasks = (function () {
 
         // Find project with id in list & set selectedProject
         const index = listOfProjects.findIndex((button) => button.id === id);
-        const selectedProject = listOfProjects[index];
+        selectedProject = listOfProjects[index];
         // Update task display with selectedProject
         displayTasks(selectedProject);
     };
@@ -168,6 +196,9 @@ const displayProjectsAndTasks = (function () {
         projectButtons[0].classList.add("active");
         activeButton = projectButtons[0];
         console.log(activeButton);
+        // Set selected project (Display's this projects tasks)
+        selectedProject = listOfProjects[0];
+        console.log(selectedProject)
     };
 
     initialDisplay();

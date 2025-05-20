@@ -52,6 +52,7 @@ const task = (function () {
     newTask2.addTaskToProject(newTask2);
     newTask3.addTaskToProject(newTask3);
 
+    return{createTask}
 })()
 
 export { task }

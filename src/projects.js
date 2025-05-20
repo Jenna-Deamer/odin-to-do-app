@@ -7,8 +7,9 @@ const project = (function () {
         const id = crypto.randomUUID();
 
         const getTaskList = () => taskList;
+
      
-        return { name, id, getTaskList }
+        return { name, id, getTaskList, }
     };
 
     const addProjectToListOfProjects = (newProject) => {
