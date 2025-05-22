@@ -58,6 +58,10 @@ button {
     color: #fff;
 }
 
+.hidden{
+    display: none;
+   
+}
 header {
     text-align: center;
     padding: .5em;
@@ -202,3 +206,14 @@ dialog form {
 .details-btn {
     margin-right: 1em;
 }
+
+.task-sub-section{
+    display: flex;
+    padding-left: 2em;
+    gap: 2em;
+    display: none;
+}
+.task-sub-section ul{
+    list-style: none;
+}
+
