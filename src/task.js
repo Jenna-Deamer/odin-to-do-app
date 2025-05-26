@@ -23,10 +23,15 @@ const task = (function () {
         const addTaskToProject = (task) => {
             // find project using projectName
             const projectIndex = listOfProjects.findIndex((project) => project.name == projectName)
-            const selectedProject = listOfProjects[projectIndex];
+            let selectedProject = listOfProjects[projectIndex];
             // Get taskList
             let taskList = selectedProject.getTaskList();
             // Push task into taskList 
+            taskList.push(task);
+
+            // Always add task to default project (All)
+            selectedProject = listOfProjects[0];
+            taskList = selectedProject.getTaskList();
             taskList.push(task);
         }
 
@@ -37,9 +42,8 @@ const task = (function () {
             else {
                 isComplete = true;
             }
-
-
         }
+
         return { id, getProjectName, getTitle, getDescription, getDueDate, getPriority, getStatus, setDueDate, setPriority, toggleStatus, addTaskToProject };
     }
 

@@ -21,6 +21,7 @@ const project = (function () {
     const defaultProject = createProject("All");
     addProjectToListOfProjects(defaultProject);
     
+
     // Testing
     const testProject2 = createProject("Work");
 
@@ -30,7 +31,7 @@ const project = (function () {
     addProjectToListOfProjects(testProject3);
     console.log(...listOfProjects);
 
-    return { createProject, addProjectToListOfProjects }
+    return { createProject, addProjectToListOfProjects,defaultProject }
 })();
 
 
