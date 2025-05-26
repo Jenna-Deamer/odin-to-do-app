@@ -201,6 +201,7 @@ const displayProjectsAndTasks = (function () {
       incompleteTaskList.innerHTML += taskItem;
     });
 
+    setCompletedStyleOnCompleteTasks(taskList);
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
     // Create container for completed tasks & populate
@@ -242,6 +243,13 @@ const displayProjectsAndTasks = (function () {
       });
     });
   };
+
+  const setCompletedStyleOnCompleteTasks = (taskList) => {
+    // Get all tasks & check which ones are completed 
+
+    // Apply checked class to all completed tasks
+ 
+  }
 
   const switchActiveProject = (button) => {
     const id = button.parentNode.id;
