@@ -231,13 +231,13 @@ const displayProjectsAndTasks = (function () {
         // Get id of btn clicked & toggle checked class
         const id = button.parentNode.parentNode.id;
         console.log("Status Button Clicked: " + id);
-        button.classList.toggle('checked');
+        button.classList.toggle("checked");
 
         // Find the task with the matching id to change it's status
         const taskIndex = taskList.findIndex((button) => button.id === id);
         const selectedTask = taskList[taskIndex];
-        console.log(selectedTask)
-      
+        console.log(selectedTask);
+
         // Toggle the status
         selectedTask.toggleStatus();
       });
@@ -245,11 +245,19 @@ const displayProjectsAndTasks = (function () {
   };
 
   const setCompletedStyleOnCompleteTasks = (taskList) => {
-    // Get all tasks & check which ones are completed 
-
-    // Apply checked class to all completed tasks
- 
-  }
+    const statusButtons = document.querySelectorAll(".toggle-task-status-btn");
+    // Get all statusButtons to apply style to
+    statusButtons.forEach((button) => {
+      // Get all tasks & check which ones are completed
+      taskList.forEach((task) => {
+        if (task.getStatus() === true) {
+          console.log("true");
+          // Apply checked class to all completed tasks
+          button.classList.toggle("checked");
+        }
+      });
+    });
+  };
 
   const switchActiveProject = (button) => {
     const id = button.parentNode.id;
