@@ -198,7 +198,10 @@ dialog form {
     background-color: transparent;
     border: 2px solid #2b2a2a;
 }
-
+.checked{
+    background-color: #12b04a;
+    border: none;
+}
 .toggle-task-status-btn:hover {
     border: 2px solid #12b04a;
 }
@@ -209,11 +212,16 @@ dialog form {
 
 .task-sub-section{
     display: flex;
-    padding-left: 2em;
+    padding: 1em 2em;
     gap: 2em;
     display: none;
+    border-top:#2b2a2a 1px solid;
 }
+
 .task-sub-section ul{
     list-style: none;
 }
 
+.task-description{
+    max-width: 400px;
+}

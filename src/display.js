@@ -1,3 +1,4 @@
+import { ta } from "date-fns/locale";
 import { listOfProjects } from "./projects";
 import { project } from "./projects";
 import { task } from "./task";
@@ -187,37 +188,54 @@ const displayProjectsAndTasks = (function () {
       const taskPriory = task.getPriority();
       const taskStatus = task.getStatus();
       const taskID = task.id;
+      const descriptionID = +1;
 
       const taskItem = `<li class='task-list-item'>
             <div class='task-main-section' id='${taskID}'><div class='task-name-group'><button class='toggle-task-status-btn'></button><p>${taskName}</p></div><p>${taskDueDate}</p><button class='details-btn'>Details</button></div>
-             <div class='task-sub-section '>${taskDescription} 
+             <div class='task-sub-section' id='${descriptionID}'><p class='task-description'>${taskDescription}</p>
              <ul>
-             <li>${taskProjectName}</li>
-               <li>${taskPriory}</li>
-                 <li>${taskDueDate}</li>
+             <li>Project: ${taskProjectName}</li>
+               <li>Priority: ${taskPriory}</li>
+                 <li>Due: ${taskDueDate}</li>
              </ul></div>
            </li>`;
-
       incompleteTaskList.innerHTML += taskItem;
     });
 
     handleShowTaskDescriptionClick();
+    handleTaskStatusClick(task);
     // Create container for completed tasks & populate
   };
 
   const handleShowTaskDescriptionClick = () => {
     const detailButtons = document.querySelectorAll(".details-btn");
-    const taskSubSection = document.querySelector(".task-sub-section");
-    detailButtons.forEach((button) => {
-      const id = button.parentNode.id;
+    const descriptionDivs = document.querySelectorAll(".task-sub-section");
 
+    detailButtons.forEach((button, descriptionID) => {
       button.addEventListener("click", () => {
-        console.log("Button Clicked: " + id);
-        if ((taskSubSection.style.display === "flex")) {
-          taskSubSection.style.display = "none";
+        const selectedDescription = descriptionDivs[descriptionID];
+        if (selectedDescription.style.display === "flex") {
+          selectedDescription.style.display = "none";
         } else {
-          taskSubSection.style.display ="flex";
+          selectedDescription.style.display = "flex";
         }
+      });
+    });
+  };
+
+  const handleTaskStatusClick = (task) => {
+    const statusButtons = document.querySelectorAll(".toggle-task-status-btn");
+
+    statusButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const id = button.parentNode.parentNode.id;
+        console.log("Status Button Clicked: " + id);
+
+        button.classList.toggle('checked');
+        console.log(task)
+        // task.toggleStatus();
+        // console.log(task.getStatus())
+    
       });
     });
   };
