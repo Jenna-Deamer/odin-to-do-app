@@ -186,9 +186,8 @@ const displayProjectsAndTasks = (function () {
       const taskDescription = task.getDescription();
       const taskDueDate = task.getDueDate();
       const taskPriory = task.getPriority();
-      const taskStatus = task.getStatus();
       const taskID = task.id;
-      const descriptionID = +1;
+      const descriptionID = +1; // ID to determine which description to open on click
 
       const taskItem = `<li class='task-list-item'>
             <div class='task-main-section' id='${taskID}'><div class='task-name-group'><button class='toggle-task-status-btn'></button><p>${taskName}</p></div><p>${taskDueDate}</p><button class='details-btn'>Details</button></div>
@@ -203,7 +202,7 @@ const displayProjectsAndTasks = (function () {
     });
 
     handleShowTaskDescriptionClick();
-    handleTaskStatusClick(task);
+    handleTaskStatusClick(taskList);
     // Create container for completed tasks & populate
   };
 
@@ -223,19 +222,23 @@ const displayProjectsAndTasks = (function () {
     });
   };
 
-  const handleTaskStatusClick = (task) => {
+  const handleTaskStatusClick = (taskList) => {
     const statusButtons = document.querySelectorAll(".toggle-task-status-btn");
 
     statusButtons.forEach((button) => {
       button.addEventListener("click", () => {
+        // Get id of btn clicked & toggle checked class
         const id = button.parentNode.parentNode.id;
         console.log("Status Button Clicked: " + id);
-
         button.classList.toggle('checked');
-        console.log(task)
-        // task.toggleStatus();
-        // console.log(task.getStatus())
-    
+
+        // Find the task with the matching id to change it's status
+        const taskIndex = taskList.findIndex((button) => button.id === id);
+        const selectedTask = taskList[taskIndex];
+        console.log(selectedTask)
+      
+        // Toggle the status
+        selectedTask.toggleStatus();
       });
     });
   };
