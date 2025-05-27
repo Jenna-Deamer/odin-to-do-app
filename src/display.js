@@ -205,6 +205,11 @@ const displayProjectsAndTasks = (function () {
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
     // Create container for completed tasks & populate
+    taskList.forEach((task) => {
+      console.log(task)
+      console.log("Status Is")
+      console.log(task.getStatus());
+     })
   };
 
   const handleShowTaskDescriptionClick = () => {
@@ -240,6 +245,7 @@ const displayProjectsAndTasks = (function () {
 
         // Toggle the status
         selectedTask.toggleStatus();
+
       });
     });
   };
