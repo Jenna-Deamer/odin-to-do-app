@@ -166,6 +166,8 @@ const displayProjectsAndTasks = (function () {
   };
 
   const displayTasks = (selectedProject) => {
+    let descriptionID = 1; // ID to determine which description to open on click
+
     // If no selected project, set to first one in list ('All')
     if (!selectedProject) {
       selectedProject = listOfProjects[0];
@@ -187,7 +189,7 @@ const displayProjectsAndTasks = (function () {
       const taskDueDate = task.getDueDate();
       const taskPriory = task.getPriority();
       const taskID = task.id;
-      const descriptionID = +1; // ID to determine which description to open on click
+      descriptionID++; // Increase id so each div has a unq one.
 
       const taskItem = `<li class='task-list-item'>
             <div class='task-main-section' id='${taskID}'><div class='task-name-group'><button class='toggle-task-status-btn'></button><p>${taskName}</p></div><p>${taskDueDate}</p><button class='details-btn'>Details</button></div>
@@ -205,11 +207,7 @@ const displayProjectsAndTasks = (function () {
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
     // Create container for completed tasks & populate
-    taskList.forEach((task) => {
-      console.log(task)
-      console.log("Status Is")
-      console.log(task.getStatus());
-     })
+
   };
 
   const handleShowTaskDescriptionClick = () => {
@@ -245,7 +243,7 @@ const displayProjectsAndTasks = (function () {
 
         // Toggle the status
         selectedTask.toggleStatus();
-
+   
       });
     });
   };
@@ -254,14 +252,17 @@ const displayProjectsAndTasks = (function () {
     const statusButtons = document.querySelectorAll(".toggle-task-status-btn");
     // Get all statusButtons to apply style to
     statusButtons.forEach((button) => {
-      // Get all tasks & check which ones are completed
-      taskList.forEach((task) => {
-        if (task.getStatus() === true) {
-          console.log("true");
-          // Apply checked class to all completed tasks
-          button.classList.toggle("checked");
-        }
-      });
+      const id = button.parentNode.parentNode.id;
+      // Get task from button's index
+      const taskIndex = taskList.findIndex((button) => button.id === id);
+      console.log(taskIndex);
+      const taskToCheck = taskList[taskIndex];
+      console.log(taskToCheck);
+      // Check if that task status is true
+      if (taskToCheck.getStatus()) {
+        // Apply class if true
+        button.classList.add("checked");
+      }
     });
   };
 
