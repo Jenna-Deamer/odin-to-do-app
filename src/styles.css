@@ -170,7 +170,7 @@ dialog form {
 .task-list-item {
     list-style: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    border-left: 8px solid purple;
+    border-left: 8px solid;
     border-radius: 10px;
     margin: 1em 0;
 
@@ -212,10 +212,10 @@ dialog form {
 
 .task-sub-section{
     display: flex;
-    padding: 1em 2em;
+    padding: 0 2em;
+    padding-bottom: 1em;
     gap: 2em;
     display: none;
-    border-top:#2b2a2a 1px solid;
 }
 
 .task-sub-section ul{

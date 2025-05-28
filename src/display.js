@@ -204,10 +204,11 @@ const displayProjectsAndTasks = (function () {
     });
 
     setCompletedStyleOnCompleteTasks(taskList);
+    setPriorityColorOnTask(taskList);
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
-    // Create container for completed tasks & populate
 
+    // Create container for completed tasks & populate
   };
 
   const handleShowTaskDescriptionClick = () => {
@@ -239,12 +240,33 @@ const displayProjectsAndTasks = (function () {
         // Find the task with the matching id to change it's status
         const taskIndex = taskList.findIndex((button) => button.id === id);
         const selectedTask = taskList[taskIndex];
-        console.log(selectedTask);
 
         // Toggle the status
         selectedTask.toggleStatus();
-   
       });
+    });
+  };
+
+  const setPriorityColorOnTask = (taskList) => {
+    // Get all task list items
+    const taskContainers = document.querySelectorAll(".task-list-item");
+
+    taskContainers.forEach((taskContainer) => {
+      // Find task in list
+      const id = taskContainer.firstElementChild.id;
+
+      const taskIndex = taskList.findIndex(
+        (taskContainer) => taskContainer.id === id
+      );
+      const selectedTask = taskList[taskIndex];
+      // check priotry & set color
+      if (selectedTask.getPriority() === "High") {
+        taskContainer.style.borderColor = "#f23535";
+      } else if (selectedTask.getPriority() === "Medium") {
+        taskContainer.style.borderColor = "#e66735";
+      } else {
+        taskContainer.style.borderColor = "#f0ab35";
+      }
     });
   };
 
@@ -255,9 +277,8 @@ const displayProjectsAndTasks = (function () {
       const id = button.parentNode.parentNode.id;
       // Get task from button's index
       const taskIndex = taskList.findIndex((button) => button.id === id);
-      console.log(taskIndex);
       const taskToCheck = taskList[taskIndex];
-      console.log(taskToCheck);
+
       // Check if that task status is true
       if (taskToCheck.getStatus()) {
         // Apply class if true
@@ -301,6 +322,7 @@ const displayProjectsAndTasks = (function () {
     selectedProject = listOfProjects[0];
     console.log(selectedProject);
   };
+
 
   initialDisplay();
 })();
