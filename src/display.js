@@ -23,7 +23,11 @@ const displayProjectsAndTasks = (function () {
   const taskContainer = document.querySelector("#task-container");
   const projectDisplayName = document.querySelector("#current-project-label");
   const incompleteTaskList = document.createElement("ul");
+  incompleteTaskList.id = "incomplete-task-list";
+  const completeTaskList = document.createElement("ul");
+  completeTaskList.id = "complete-task-list";
   taskContainer.appendChild(incompleteTaskList);
+  taskContainer.appendChild(completeTaskList);
 
   // Form event listeners
   document
@@ -180,6 +184,7 @@ const displayProjectsAndTasks = (function () {
 
     // Reset to avoid duplication
     incompleteTaskList.innerHTML = "";
+    completeTaskList.innerHTML = "";
 
     // Create task list item
     taskList.forEach((task) => {
@@ -200,7 +205,13 @@ const displayProjectsAndTasks = (function () {
                  <li>Due: ${taskDueDate}</li>
              </ul></div>
            </li>`;
-      incompleteTaskList.innerHTML += taskItem;
+
+      // Filter tasks into complete or incomplete containers
+      if (task.getStatus()) {
+        completeTaskList.innerHTML += taskItem;
+      } else {
+        incompleteTaskList.innerHTML += taskItem;
+      }
     });
 
     setCompletedStyleOnCompleteTasks(taskList);
@@ -322,7 +333,6 @@ const displayProjectsAndTasks = (function () {
     selectedProject = listOfProjects[0];
     console.log(selectedProject);
   };
-
 
   initialDisplay();
 })();
