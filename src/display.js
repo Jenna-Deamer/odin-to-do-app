@@ -25,7 +25,6 @@ const displayProjectsAndTasks = (function () {
   const incompleteTaskList = document.querySelector("#incomplete-task-list");
   const completeTaskList = document.querySelector("#complete-task-list");
 
-
   // Form event listeners
   document
     .querySelector("#create-project-modal form")
@@ -167,7 +166,7 @@ const displayProjectsAndTasks = (function () {
   };
 
   const displayTasks = (selectedProject) => {
-    let descriptionID = 1; // ID to determine which description to open on click
+    let descriptionID = 0; // ID to determine which description to open on click
 
     // If no selected project, set to first one in list ('All')
     if (!selectedProject) {
@@ -193,7 +192,7 @@ const displayProjectsAndTasks = (function () {
       const taskID = task.id;
       descriptionID++; // Increase id so each div has a unq one.
 
-      const taskItem = `<li class='task-list-item'>
+      const taskItem = `<li class='task-list-item' id='${taskID}'>
             <div class='task-main-section' id='${taskID}'><div class='task-name-group'><button class='toggle-task-status-btn'></button><p>${taskName}</p></div><p>${taskDueDate}</p><button class='details-btn'>Details</button></div>
              <div class='task-sub-section' id='${descriptionID}'><p class='task-description'>${taskDescription}</p>
              <ul>
@@ -217,7 +216,38 @@ const displayProjectsAndTasks = (function () {
     setPriorityColorOnTask(taskList);
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
+    handleDeleteTask();
+  };
 
+  const handleDeleteTask = () => {
+    const editTaskButtons = document.querySelectorAll(".delete-task-btn");
+
+    editTaskButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        console.log("clicked");
+
+        // Get id of btn clicked
+        const id = button.parentNode.parentNode.parentNode.id;
+        console.log(id);
+
+        // Remove from all projects
+        listOfProjects.forEach((selectedProject) => {
+          // Get each project's taskList & look for task to delete
+          let currentTaskList = selectedProject.getTaskList();
+          let taskToRemove = currentTaskList.find((task) => task.id === id);
+
+          // Remove task if found in project's list
+          if(taskToRemove){
+            console.log('found task to remove');
+            taskToRemove.removeTaskFromProject(selectedProject,taskToRemove);
+          }
+
+        });
+
+        // Update task container display
+        displayTasks();
+      });
+    });
   };
 
   const handleShowTaskDescriptionClick = () => {
