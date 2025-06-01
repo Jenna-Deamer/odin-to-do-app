@@ -22,12 +22,9 @@ const displayProjectsAndTasks = (function () {
   // Task container
   const taskContainer = document.querySelector("#task-container");
   const projectDisplayName = document.querySelector("#current-project-label");
-  const incompleteTaskList = document.createElement("ul");
-  incompleteTaskList.id = "incomplete-task-list";
-  const completeTaskList = document.createElement("ul");
-  completeTaskList.id = "complete-task-list";
-  taskContainer.appendChild(incompleteTaskList);
-  taskContainer.appendChild(completeTaskList);
+  const incompleteTaskList = document.querySelector("#incomplete-task-list");
+  const completeTaskList = document.querySelector("#complete-task-list");
+
 
   // Form event listeners
   document
@@ -219,7 +216,6 @@ const displayProjectsAndTasks = (function () {
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
 
-    // Create container for completed tasks & populate
   };
 
   const handleShowTaskDescriptionClick = () => {
