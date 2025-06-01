@@ -200,7 +200,9 @@ const displayProjectsAndTasks = (function () {
              <li>Project: ${taskProjectName}</li>
                <li>Priority: ${taskPriory}</li>
                  <li>Due: ${taskDueDate}</li>
-             </ul></div>
+             </ul>
+                        <div class='button-container'><button class='edit-task-btn'>Edit</button><button class='delete-task-btn'>Delete</button></div>
+             </div>
            </li>`;
 
       // Filter tasks into complete or incomplete containers

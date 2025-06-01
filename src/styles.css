@@ -58,10 +58,11 @@ button {
     color: #fff;
 }
 
-.hidden{
+.hidden {
     display: none;
-   
+
 }
+
 header {
     text-align: center;
     padding: .5em;
@@ -198,30 +199,41 @@ dialog form {
     background-color: transparent;
     border: 2px solid #2b2a2a;
 }
-.checked{
+
+.checked {
     background-color: #12b04a;
     border: none;
 }
+
 .toggle-task-status-btn:hover {
     border: 2px solid #12b04a;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: flex-end;
+    gap: 1em;
 }
 
 .details-btn {
     margin-right: 1em;
 }
 
-.task-sub-section{
+.task-sub-section {
     display: flex;
-    padding: 0 2em;
-    padding-bottom: 1em;
+    padding: 0 1em 2em 1em;
+    /* padding-bottom: 1em; */
     gap: 2em;
     display: none;
 }
 
-.task-sub-section ul{
+.task-sub-section ul {
     list-style: none;
+    width: 100%;
 }
 
-.task-description{
-    max-width: 400px;
+.task-description {
+   width: 100%;
 }
