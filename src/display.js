@@ -219,14 +219,31 @@ const displayProjectsAndTasks = (function () {
     handleDeleteTask();
   };
 
-  const handleDeleteTask = () => {
-    const editTaskButtons = document.querySelectorAll(".delete-task-btn");
-
+  const handleEditTask = () => {
+    const editTaskButtons = document.querySelectorAll(".edit-task-btn");
     editTaskButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+        // Get id for task item clicked
+        const id = button.parentNode.parentNode.parentNode.id;
+        console.log(id);
+
+        // Populate edit form with task details
+
+        // Show form
+
+        // Handle submission & any errors
+
+        // Replace task with updated in all project taskLists
+        })
+    });
+  }
+  const handleDeleteTask = () => {
+    const deleteTaskButtons = document.querySelectorAll(".delete-task-btn");
+
+    deleteTaskButtons.forEach((button) => {
       button.addEventListener("click", () => {
         console.log("clicked");
-
-        // Get id of btn clicked
+       // Get id for task item clicked
         const id = button.parentNode.parentNode.parentNode.id;
         console.log(id);
 
