@@ -239,7 +239,9 @@ const displayProjectsAndTasks = (function () {
           // Remove task if found in project's list
           if(taskToRemove){
             console.log('found task to remove');
-            taskToRemove.removeTaskFromProject(selectedProject,taskToRemove);
+            console.log(taskToRemove)
+            console.log('----------------')
+            taskToRemove.removeTaskFromProject(currentTaskList,taskToRemove);
           }
 
         });

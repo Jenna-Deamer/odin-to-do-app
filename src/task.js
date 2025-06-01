@@ -43,10 +43,14 @@ const task = (function () {
       taskList.push(task);
     };
 
-    const removeTaskFromProject = (selectedProject, taskToRemove) => {
-      let taskList = selectedProject.getTaskList();
+    const removeTaskFromProject = (currentTaskList, taskToRemove) => {
       // remove task from arr
-      taskList.splice(taskToRemove,1)
+      console.log('task list before')
+      console.log(...currentTaskList)
+      currentTaskList.splice(taskToRemove, 1);
+      console.log('tasklist now')
+      console.log(...currentTaskList)
+    
     };
 
     const toggleStatus = () => {
