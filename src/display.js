@@ -222,7 +222,7 @@ const displayProjectsAndTasks = (function () {
   const handleEditTask = () => {
     const editTaskButtons = document.querySelectorAll(".edit-task-btn");
     editTaskButtons.forEach((button) => {
-        button.addEventListener("click", () => {
+      button.addEventListener("click", () => {
         // Get id for task item clicked
         const id = button.parentNode.parentNode.parentNode.id;
         console.log(id);
@@ -234,35 +234,46 @@ const displayProjectsAndTasks = (function () {
         // Handle submission & any errors
 
         // Replace task with updated in all project taskLists
-        })
+      });
     });
-  }
+  };
   const handleDeleteTask = () => {
     const deleteTaskButtons = document.querySelectorAll(".delete-task-btn");
 
     deleteTaskButtons.forEach((button) => {
       button.addEventListener("click", () => {
         console.log("clicked");
-       // Get id for task item clicked
+        // Get id for task item clicked
         const id = button.parentNode.parentNode.parentNode.id;
         console.log(id);
 
-        // Remove from all projects
-        listOfProjects.forEach((selectedProject) => {
-          // Get each project's taskList & look for task to delete
-          let currentTaskList = selectedProject.getTaskList();
-          let taskToRemove = currentTaskList.find((task) => task.id === id);
+        // Get the task by searching default project
+        const defaultProject = listOfProjects[0];
+        let taskList = defaultProject.getTaskList();
+        console.log(taskList);
 
-          // Remove task if found in project's list
-          if(taskToRemove){
-            console.log('found task to remove');
-            console.log(taskToRemove)
-            console.log('----------------')
-            taskToRemove.removeTaskFromProject(currentTaskList,taskToRemove);
-          }
+        // Get the index of task to remove
+        let taskIndex = taskList.findIndex((task) => task.id === id);
+        console.log(taskIndex);
 
-        });
+        // Get the task obj & get the project's name
+        let taskToRemove = taskList[taskIndex];
+        let projectName = taskToRemove.getProjectName();
+        console.log(taskToRemove);
 
+        taskList.splice(taskIndex, 1);
+
+        // Find the project the task is associated to
+        let projectToRemoveTaskFromIndex = listOfProjects.findIndex(
+          (project) => project.name === projectName
+        );
+        // remove task
+        let projectToRemoveTaskFrom =
+          listOfProjects[projectToRemoveTaskFromIndex];
+        taskList = projectToRemoveTaskFrom.getTaskList();
+
+        taskIndex = taskList.findIndex((task) => task.id === id);
+        taskList.splice(taskIndex,1);
         // Update task container display
         displayTasks();
       });

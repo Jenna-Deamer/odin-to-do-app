@@ -31,7 +31,7 @@ const project = (function () {
     addProjectToListOfProjects(testProject3);
     console.log(...listOfProjects);
 
-    return { createProject, addProjectToListOfProjects,defaultProject }
+    return { createProject, addProjectToListOfProjects, defaultProject }
 })();
 
 
