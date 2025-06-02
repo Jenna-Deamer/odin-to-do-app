@@ -3,6 +3,7 @@ import { project } from "./projects";
 import { task } from "./task";
 import { formatDate } from "./dateFormatHelper";
 
+
 const displayProjectsAndTasks = (function () {
   let activeButton;
   let selectedProject;
@@ -98,7 +99,7 @@ const displayProjectsAndTasks = (function () {
           taskPrioryField.value,
           false
         );
-        console.log(newTask);
+    
         // Add task to the project's taskList
         newTask.addTaskToProject(newTask);
         // Display updated task container
@@ -201,10 +202,8 @@ const displayProjectsAndTasks = (function () {
       const taskProjectName = task.getProjectName();
       const taskName = task.getTitle();
       const taskDescription = task.getDescription();
-      const taskDueDate = task.getDueDate();
-      console.log(taskDueDate);
-    //   let formattedDate = formatDate(task.getDueDate());
-    //   console.log(formattedDate);
+      const taskDueDate = formatDate(task.getDueDate());
+    
       const taskPriory = task.getPriority();
       const taskID = task.id;
       descriptionID++; // Increase id so each div has a unq one.

@@ -1,6 +1,6 @@
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 
 export const formatDate = (dateToFormat) =>{
-return format(dateToFormat, "dd MMM, yy")
-
+let parsedDate = parse(dateToFormat, 'dd-MM-yyyy', new Date());
+return format(new Date(parsedDate), 'MMMM dd, yyyy');
 }

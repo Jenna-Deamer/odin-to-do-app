@@ -1,4 +1,5 @@
 export const listOfProjects = [];
+import { saveToLocalStorage } from "./storage";
 
 const project = (function () {
 
@@ -14,6 +15,7 @@ const project = (function () {
 
     const addProjectToListOfProjects = (newProject) => {
         listOfProjects.push(newProject);
+        localStorage.setItem('project', newProject)
     };
 
 

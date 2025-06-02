@@ -1,5 +1,6 @@
 import { project } from "./projects";
 import { listOfProjects } from "./projects";
+import { saveToLocalStorage } from "./storage";
 
 const task = (function () {
   const createTask = (
@@ -83,7 +84,7 @@ const task = (function () {
     "Work",
     "Code Again",
     "some cool desc",
-    "20-10-2025",
+    "2-12-2025",
     "High",
     false
   );
@@ -91,7 +92,7 @@ const task = (function () {
     "Garden",
     "Plant Some Stuff",
     "some cool desc some cool desc some cool desc some cool descsome cool descsome cool desc",
-    "20-10-2025",
+    "15-5-2025",
     "Medium",
     false
   );
