@@ -1,7 +1,7 @@
-import { ta } from "date-fns/locale";
 import { listOfProjects } from "./projects";
 import { project } from "./projects";
 import { task } from "./task";
+import { formatDate } from "./dateFormatHelper";
 
 const displayProjectsAndTasks = (function () {
   let activeButton;
@@ -202,6 +202,9 @@ const displayProjectsAndTasks = (function () {
       const taskName = task.getTitle();
       const taskDescription = task.getDescription();
       const taskDueDate = task.getDueDate();
+      console.log(taskDueDate);
+    //   let formattedDate = formatDate(task.getDueDate());
+    //   console.log(formattedDate);
       const taskPriory = task.getPriority();
       const taskID = task.id;
       descriptionID++; // Increase id so each div has a unq one.
