@@ -130,12 +130,15 @@ const displayProjectsAndTasks = (function () {
     // populate project dropdown with list of projects
     for (let i = 0; i < listOfProjects.length; i++) {
       let projectIndex = listOfProjects[i];
-      // Create option for each item in list
-      let option = document.createElement("option");
-      option.text = projectIndex.name;
-      option.value = projectIndex.name;
-      // append to select
-      taskProjectNameField.appendChild(option);
+      console.log(projectIndex.name);
+      if (projectIndex.name != "All") {
+        // Create option for each item in list
+        let option = document.createElement("option");
+        option.text = projectIndex.name;
+        option.value = projectIndex.name;
+        // append to select
+        taskProjectNameField.appendChild(option);
+      }
     }
     // show modal
     createTaskDialog.showModal();
@@ -148,9 +151,9 @@ const displayProjectsAndTasks = (function () {
 
   const initialDisplay = () => {
     // pull projects & their tasks from local storage
-    let storedProjects = localStorage.getItem("projects");
-    console.log(storedProjects);
-    listOfProjects = JSON.parse(storedProjects);
+    // let storedProjects = localStorage.getItem("projects");
+    // console.log(storedProjects);
+    // listOfProjects = JSON.parse(storedProjects);
 
     // Populate project list
     displayProjects(listOfProjects);
@@ -265,7 +268,7 @@ const displayProjectsAndTasks = (function () {
         // Loop through the rest of the projects & populate the select
         for (let i = 0; i < listOfProjects.length; i++) {
           let projectIndex = listOfProjects[i];
-          if (projectIndex.name != selectedTask.getProjectName()) {
+          if (projectIndex.name != selectedTask.getProjectName() && projectIndex.name != "All") {
             // Create option for each item in list
             let option = document.createElement("option");
             option.text = projectIndex.name;

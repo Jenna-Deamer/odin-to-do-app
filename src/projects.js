@@ -15,8 +15,8 @@ const project = (function () {
 
     const addProjectToListOfProjects = (newProject) => {
         listOfProjects.push(newProject);
-        // Save current listOfProjects to storage
-        localStorage.setItem('projects', JSON.stringify(listOfProjects));
+        // // Save current listOfProjects to storage
+        // localStorage.setItem('projects', JSON.stringify(listOfProjects));
     };
 
 

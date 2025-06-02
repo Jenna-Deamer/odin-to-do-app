@@ -84,7 +84,7 @@ const task = (function () {
     "Work",
     "Code Again",
     "some cool desc",
-    "2-12-2025",
+    "2025-10-2",
     "High",
     false
   );
@@ -92,7 +92,7 @@ const task = (function () {
     "Garden",
     "Plant Some Stuff",
     "some cool desc some cool desc some cool desc some cool descsome cool descsome cool desc",
-    "15-5-2025",
+    "2025-06-4",
     "Medium",
     false
   );
@@ -100,7 +100,7 @@ const task = (function () {
     "Work",
     "Code Again Again!",
     "some cool desc",
-    "20-10-2025",
+   "2025-06-4",
     "Low",
     false
   );
