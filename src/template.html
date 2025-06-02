@@ -101,6 +101,47 @@
         </form>
     </dialog>
 
+
+    <dialog id="edit-task-modal">
+        <div class="modal-button-container">
+            <button id="close-edit-task-modal-btn">X</button>
+        </div>
+
+        <h2>Edit Task</h2>
+        <p id="info-label-edit-task" class="info-label"></p>
+        <form>
+            <fieldset>
+                <label for="task-name">Name:</label>
+                <input type="text" id="edit-task-name" form="task-name" required>
+            </fieldset>
+            <fieldset>
+                <label>Project:</label>
+                <select id="edit-task-project-name" name="task-project-name"></select>
+            </fieldset>
+            <fieldset>
+                <label>Due Date:</label>
+                <input type="date" id="edit-task-due-date" fom="task-due-date" required>
+            </fieldset>
+            <fieldset>
+                <label for="task-priority">Priority:</label>
+                <select id="edit-task-priority" name="task-priority" required>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">low</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label>Description:</label>
+                <input type="text" id="edit-task-description" form="task-description" required>
+            </fieldset>
+
+
+            <button type="submit" class="submit-btn">Save</button>
+
+
+        </form>
+    </dialog>
+
 </body>
 
 </html>

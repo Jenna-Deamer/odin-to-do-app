@@ -9,16 +9,32 @@ const displayProjectsAndTasks = (function () {
   // Dialog html items
   const createProjectDialog = document.querySelector("#create-project-modal");
   const createTaskDialog = document.querySelector("#create-task-modal");
+  const editTaskDialog = document.querySelector("#edit-task-modal");
   const projectFormInfoLabel = document.querySelector("#info-label-project");
   const taskFormInfoLabel = document.querySelector("#info-label-task");
+  const taskEditFormInfoLabel = document.querySelector("#info-label-edit-task");
+  document
+    .querySelector("#close-edit-task-modal-btn")
+    .addEventListener("click", () => {
+      editTaskDialog.close();
+    });
   // Project form field
   const projectNameField = document.querySelector("#project-name");
   // Task form fields
-  const taskNameFIeld = document.querySelector("#task-name");
+  const taskNameField = document.querySelector("#task-name");
   const taskDueDateField = document.querySelector("#task-due-date");
   const taskPrioryField = document.querySelector("#task-priority");
   const taskDescriptionField = document.querySelector("#task-description");
   const taskProjectNameField = document.querySelector("#task-project-name");
+  const taskEditNameField = document.querySelector("#edit-task-name");
+  const taskEditDueDateField = document.querySelector("#edit-task-due-date");
+  const taskEditPrioryField = document.querySelector("#edit-task-priority");
+  const taskEditDescriptionField = document.querySelector(
+    "#edit-task-description"
+  );
+  const taskEditProjectNameField = document.querySelector(
+    "#edit-task-project-name"
+  );
   // Task container
   const taskContainer = document.querySelector("#task-container");
   const projectDisplayName = document.querySelector("#current-project-label");
@@ -65,7 +81,7 @@ const displayProjectsAndTasks = (function () {
 
       // validate form (if any are empty display error)
       if (
-        !taskNameFIeld.value ||
+        !taskNameField.value ||
         !taskProjectNameField.value ||
         !taskDueDateField.value ||
         !taskPrioryField.value ||
@@ -76,7 +92,7 @@ const displayProjectsAndTasks = (function () {
         // Create the task with status set to false (incomplete task)
         let newTask = task.createTask(
           taskProjectNameField.value,
-          taskNameFIeld.value,
+          taskNameField.value,
           taskDescriptionField.value,
           taskDueDateField.value,
           taskPrioryField.value,
@@ -144,8 +160,6 @@ const displayProjectsAndTasks = (function () {
 
     // Populate task container
     displayTasks(selectedProject);
-
-    // Attach event listeners
   };
 
   const displayProjects = (listOfProjects) => {
@@ -217,6 +231,7 @@ const displayProjectsAndTasks = (function () {
     handleShowTaskDescriptionClick();
     handleTaskStatusClick(taskList);
     handleDeleteTask();
+    handleEditTask();
   };
 
   const handleEditTask = () => {
@@ -225,18 +240,69 @@ const displayProjectsAndTasks = (function () {
       button.addEventListener("click", () => {
         // Get id for task item clicked
         const id = button.parentNode.parentNode.parentNode.id;
-        console.log(id);
+        // Get the task obj & index by searching default project
+        const defaultProject = listOfProjects[0];
+        const taskList = defaultProject.getTaskList();
+        const taskIndex = taskList.findIndex((task) => task.id === id);
+        const selectedTask = taskList[taskIndex];
 
         // Populate edit form with task details
+        taskEditNameField.value = selectedTask.getTitle();
+        taskEditDueDateField.value = selectedTask.getDueDate();
+        taskEditPrioryField.value = selectedTask.getPriority();
+        taskEditDescriptionField.value = selectedTask.getDescription();
 
+        // Set first option to current project's name
+        let firstOption = document.createElement("option");
+        firstOption.text = selectedTask.getProjectName();
+        firstOption.value = selectedTask.getProjectName();
+        taskEditProjectNameField.appendChild(firstOption);
+
+        // Loop through the rest of the projects & populate the select
+        for (let i = 0; i < listOfProjects.length; i++) {
+          let projectIndex = listOfProjects[i];
+          if (projectIndex.name != selectedTask.getProjectName()) {
+            // Create option for each item in list
+            let option = document.createElement("option");
+            option.text = projectIndex.name;
+            option.value = projectIndex.name;
+            // append to select
+            taskEditProjectNameField.appendChild(option);
+          }
+        }
         // Show form
+        editTaskDialog.showModal();
 
-        // Handle submission & any errors
-
-        // Replace task with updated in all project taskLists
+        // Handle submit
+        document
+          .querySelector("#edit-task-modal form")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+            // Handle blank fields
+            if (
+              !taskEditNameField.value ||
+              !taskEditProjectNameField.value ||
+              !taskEditDueDateField.value ||
+              !taskEditPrioryField.value ||
+              !taskEditDescriptionField.value
+            ) {
+              taskEditFormInfoLabel.textContent = "Please fill out all fields!";
+            } else {
+              // Update task details
+              selectedTask.setTitle(taskEditNameField.value);
+              selectedTask.setProjectName(taskEditProjectNameField.value);
+              selectedTask.setDueDate(taskEditDueDateField.value);
+              selectedTask.setPriority(taskEditPrioryField.value);
+              selectedTask.setDescription(taskEditDescriptionField.value);
+              // Close & update display
+              editTaskDialog.close();
+              displayTasks();
+            }
+          });
       });
     });
   };
+
   const handleDeleteTask = () => {
     const deleteTaskButtons = document.querySelectorAll(".delete-task-btn");
 

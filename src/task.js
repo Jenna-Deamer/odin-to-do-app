@@ -19,6 +19,12 @@ const task = (function () {
     const getPriority = () => priority;
     const getStatus = () => isComplete;
 
+    const setTitle = (newTitle) =>{
+        title = newTitle;
+    }
+    const setProjectName = (newProjectName) =>{
+        projectName = newProjectName;
+    }
     const setDueDate = (newDueDate) => {
       dueDate = newDueDate;
     };
@@ -26,6 +32,9 @@ const task = (function () {
       priority = newPriority;
     };
 
+    const setDescription = (newDescription) =>{
+        description = newDescription;
+    }
     const addTaskToProject = (task) => {
       // find project using projectName
       const projectIndex = listOfProjects.findIndex(
@@ -43,11 +52,6 @@ const task = (function () {
       taskList.push(task);
     };
 
-    const removeTaskFromProject = (currentTaskList, taskToRemove) => {
-  
-    
-    };
-
     const toggleStatus = () => {
       if (isComplete) {
         isComplete = false;
@@ -58,6 +62,9 @@ const task = (function () {
 
     return {
       id,
+      setTitle,
+      setProjectName,
+      setDescription,
       getProjectName,
       getTitle,
       getDescription,
