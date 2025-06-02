@@ -273,7 +273,7 @@ const displayProjectsAndTasks = (function () {
         taskList = projectToRemoveTaskFrom.getTaskList();
 
         taskIndex = taskList.findIndex((task) => task.id === id);
-        taskList.splice(taskIndex,1);
+        taskList.splice(taskIndex, 1);
         // Update task container display
         displayTasks();
       });
@@ -312,6 +312,9 @@ const displayProjectsAndTasks = (function () {
 
         // Toggle the status
         selectedTask.toggleStatus();
+
+        // Update task container display
+        displayTasks();
       });
     });
   };

@@ -44,12 +44,7 @@ const task = (function () {
     };
 
     const removeTaskFromProject = (currentTaskList, taskToRemove) => {
-      // remove task from arr
-      console.log('task list before')
-      console.log(...currentTaskList)
-      currentTaskList.splice(taskToRemove, 1);
-      console.log('tasklist now')
-      console.log(...currentTaskList)
+  
     
     };
 
@@ -73,7 +68,6 @@ const task = (function () {
       setPriority,
       toggleStatus,
       addTaskToProject,
-      removeTaskFromProject,
     };
   };
 
