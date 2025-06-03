@@ -151,9 +151,9 @@ const displayProjectsAndTasks = (function () {
 
   const initialDisplay = () => {
     // pull projects & their tasks from local storage
-    // let storedProjects = localStorage.getItem("projects");
-    // console.log(storedProjects);
-    // listOfProjects = JSON.parse(storedProjects);
+    let storage = JSON.parse(localStorage.getItem("projects"));
+    console.log(storage)
+    listOfProjects = storage;
 
     // Populate project list
     displayProjects(listOfProjects);
@@ -268,7 +268,10 @@ const displayProjectsAndTasks = (function () {
         // Loop through the rest of the projects & populate the select
         for (let i = 0; i < listOfProjects.length; i++) {
           let projectIndex = listOfProjects[i];
-          if (projectIndex.name != selectedTask.getProjectName() && projectIndex.name != "All") {
+          if (
+            projectIndex.name != selectedTask.getProjectName() &&
+            projectIndex.name != "All"
+          ) {
             // Create option for each item in list
             let option = document.createElement("option");
             option.text = projectIndex.name;
