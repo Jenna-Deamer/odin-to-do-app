@@ -1,6 +1,6 @@
 import { project } from "./projects";
 import { listOfProjects } from "./projects";
-import { saveToLocalStorage } from "./storage";
+import { localStorageHelper } from "./storage";
 
 const task = (function () {
   const createTask = (

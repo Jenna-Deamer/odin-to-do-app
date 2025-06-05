@@ -1,6 +1,7 @@
 import { listOfProjects } from "./projects";
 import { project } from "./projects";
 import { task } from "./task";
+import { localStorageHelper } from "./storage";
 import { formatDate } from "./dateFormatHelper";
 
 const displayProjectsAndTasks = (function () {
@@ -151,9 +152,7 @@ const displayProjectsAndTasks = (function () {
 
   const initialDisplay = () => {
     // pull projects & their tasks from local storage
-    let storage = JSON.parse(localStorage.getItem("projects"));
-    console.log(storage)
-    listOfProjects = storage;
+  
 
     // Populate project list
     displayProjects(listOfProjects);
