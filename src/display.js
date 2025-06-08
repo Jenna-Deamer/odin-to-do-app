@@ -134,7 +134,6 @@ const displayProjectsAndTasks = (function () {
         // populate project dropdown with list of projects
         for (let i = 0; i < listOfProjects.length; i++) {
             let projectIndex = listOfProjects[i];
-            console.log(projectIndex.name);
             if (projectIndex.name != "All") {
                 // Create option for each item in list
                 let option = document.createElement("option");
@@ -325,24 +324,19 @@ const displayProjectsAndTasks = (function () {
 
         deleteTaskButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                console.log("clicked");
                 // Get id for task item clicked
                 const id = button.parentNode.parentNode.parentNode.id;
-                console.log(id);
 
                 // Get the task by searching default project
                 const defaultProject = listOfProjects[0];
                 let taskList = defaultProject.getTaskList();
-                console.log(taskList);
 
                 // Get the index of task to remove
                 let taskIndex = taskList.findIndex((task) => task.id === id);
-                console.log(taskIndex);
 
                 // Get the task obj & get the project's name
                 let taskToRemove = taskList[taskIndex];
                 let projectName = taskToRemove.getProjectName();
-                console.log(taskToRemove);
 
                 taskList.splice(taskIndex, 1);
 
@@ -388,7 +382,6 @@ const displayProjectsAndTasks = (function () {
             button.addEventListener("click", () => {
                 // Get id of btn clicked & toggle checked class
                 const id = button.parentNode.parentNode.id;
-                console.log("Status Button Clicked: " + id);
                 button.classList.toggle("checked");
 
                 // Find the task with the matching id to change it's status
@@ -456,7 +449,6 @@ const displayProjectsAndTasks = (function () {
         }
         button.classList.add("active");
         activeButton = button;
-        console.log(activeButton);
 
         // Find project with id in list & set selectedProject
         const index = listOfProjects.findIndex((button) => button.id === id);
@@ -478,10 +470,8 @@ const displayProjectsAndTasks = (function () {
         const projectButtons = document.querySelectorAll(".project-button");
         projectButtons[0].classList.add("active");
         activeButton = projectButtons[0];
-        console.log(activeButton);
         // Set selected project (Display's this projects tasks)
         selectedProject = listOfProjects[0];
-        console.log(selectedProject);
     };
 
     initialDisplay();
