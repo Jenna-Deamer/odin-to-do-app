@@ -18,7 +18,8 @@ const project = (function () {
 
     // Create default project for all tasks.
     const defaultProject = createProject("All");
-    addProjectToListOfProjects(defaultProject);
+    // addProjectToListOfProjects(defaultProject);
+    listOfProjects.push(defaultProject);
 
     //   // Testing
     //   const testProject2 = createProject("Work");

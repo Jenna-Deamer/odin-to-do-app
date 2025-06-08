@@ -2,12 +2,10 @@ import { project } from "./projects";
 import { listOfProjects } from "./projects";
 
 const localStorageHelper = (function () {
-    const saveToLocalStorage = (listOfProjects) => {
+    const saveToLocalStorage = () => {
         // Save current listOfProjects to storage
-        listOfProjects = localStorage.setItem(
-            "projects",
-            JSON.stringify(listOfProjects)
-        );
+        console.log(...listOfProjects);
+        localStorage.setItem("projects", JSON.stringify(listOfProjects));
     };
 
     const retrieveDataFromLocalStorage = () => {

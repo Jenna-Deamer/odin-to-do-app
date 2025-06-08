@@ -154,10 +154,11 @@ const displayProjectsAndTasks = (function () {
 
     const initialDisplay = () => {
         // pull projects & their tasks from local storage
-        localStorageHelper.retrieveDataFromLocalStorage();
+        let newListOfProjects =
+            localStorageHelper.retrieveDataFromLocalStorage();
 
         // Populate project list
-        displayProjects(listOfProjects);
+        displayProjects(newListOfProjects);
 
         // Set first project in list to active (DefaultProject called All)
         setFirstProjectInListToActive();
