@@ -50,6 +50,9 @@ const task = (function () {
             selectedProject = listOfProjects[0];
             taskList = selectedProject.getTaskList();
             taskList.push(task);
+
+            // Save updated list of all tasks
+            localStorageHelper.saveToLocalStorage();
         };
 
         const toggleStatus = () => {
@@ -58,6 +61,17 @@ const task = (function () {
             } else {
                 isComplete = true;
             }
+        };
+
+        const getTaskDetails = () => {
+            return {
+                projectName,
+                title,
+                description,
+                dueDate,
+                priority,
+                isComplete,
+            };
         };
 
         return {
@@ -75,6 +89,7 @@ const task = (function () {
             setPriority,
             toggleStatus,
             addTaskToProject,
+            getTaskDetails,
         };
     };
 

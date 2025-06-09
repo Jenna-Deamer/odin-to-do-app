@@ -13,7 +13,6 @@ const project = (function () {
 
     const addProjectToListOfProjects = (newProject) => {
         listOfProjects.push(newProject);
-        localStorageHelper.saveToLocalStorage(listOfProjects);
     };
 
     // Create default project for all tasks.

@@ -313,6 +313,8 @@ const displayProjectsAndTasks = (function () {
                             // Close & update display
                             editTaskDialog.close();
                             displayTasks();
+                            // Save updated list of all tasks
+                            localStorageHelper.saveToLocalStorage();
                         }
                     });
             });
@@ -353,6 +355,8 @@ const displayProjectsAndTasks = (function () {
                 taskList.splice(taskIndex, 1);
                 // Update task container display
                 displayTasks();
+                // Save updated list of all tasks
+                localStorageHelper.saveToLocalStorage();
             });
         });
     };
