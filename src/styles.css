@@ -222,6 +222,10 @@ dialog form {
 
 .details-btn {
     margin-right: 1em;
+    background-color: #2b2a2a;
+}
+.details-btn:hover {
+    background-color: #444242;
 }
 
 .task-sub-section {
