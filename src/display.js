@@ -402,6 +402,8 @@ const displayProjectsAndTasks = (function () {
 
                 // Update task container display
                 displayTasks();
+                // Save updated list of all tasks
+                localStorageHelper.saveToLocalStorage();
             });
         });
     };
