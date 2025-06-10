@@ -4,7 +4,6 @@ import { task } from "./task";
 
 const localStorageHelper = (function () {
     const saveToLocalStorage = () => {
-        console.log(...listOfProjects);
         // Get all tasks from default project
         let defaultProject = listOfProjects[0];
         // Get all current tasks from default project (All)
@@ -24,10 +23,8 @@ const localStorageHelper = (function () {
     const retrieveDataFromLocalStorage = () => {
         // Get data from localStorage
         let storageData = JSON.parse(localStorage.getItem("tasks"));
-        console.log("Retrived:");
         // if anything in storage re-set projects & their tasks
         if (storageData) {
-            console.log(...storageData);
             setTasksAndProjectsFromLocalStorage(storageData);
         }
 
@@ -35,25 +32,30 @@ const localStorageHelper = (function () {
     };
 
     const setTasksAndProjectsFromLocalStorage = (storageData) => {
-        // For each task, create task & project if it does not exist
+        // For each task, re-create task
         storageData.forEach((todo) => {
             let newTodo = task.createTask(
                 todo.projectName,
                 todo.title,
                 todo.description,
                 todo.dueDate,
-                todo.priorty,
+                todo.priority,
                 todo.isComplete
             );
-            console.log("Created Task");
-            console.log(newTodo);
-            console.log(newTodo.getPriority());
 
-            // Recreate the project (To reinstate functions)
-            let newProject = project.createProject(todo.projectName);
-            //add project to listOfProjects
-            project.addProjectToListOfProjects(newProject);
-            console.log(newProject);
+            // If task's project does not arealdy exist create it
+            if (!listOfProjects.includes(newTodo.getProjectName())) {
+                let newProject = project.createProject(todo.projectName);
+                //add project to listOfProjects
+                project.addProjectToListOfProjects(newProject);
+            }
+            if (listOfProjects.includes(newTodo.getProjectName())) {
+                // Recreate the project (To reinstate functions)
+                let newProject = project.createProject(todo.projectName);
+                //add project to listOfProjects
+                project.addProjectToListOfProjects(newProject);
+            }
+
             // Add task to project
             newTodo.addTaskToProject(newTodo);
         });
