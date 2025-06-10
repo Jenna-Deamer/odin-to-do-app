@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+
 * {
     padding: unset;
     margin: unset;
@@ -7,13 +9,14 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
 }
 
 body,
 html {
     height: 100%;
 }
-
 
 /*Inherit fonts for form controls*/
 input,
@@ -49,40 +52,45 @@ h6 {
 }
 
 button {
-    transition: .2s ease-in-out;
+    transition: 0.2s ease-in-out;
     cursor: pointer;
+    background-color: #114b5f;
+    color: #f1f1f1;
+    transition: 0.2s ease-in-out;
+    border: none;
+    width: 100px;
 }
-
+button:hover {
+    background-color: #028090;
+}
 .active {
-    background-color: rgb(89, 15, 112) !important;
-    color: #fff;
+    background-color: #028090 !important;
+    color: #fff !important;
 }
 
 .hidden {
     display: none;
-
 }
 
 header {
     text-align: center;
-    padding: .5em;
+    padding: 0.5em;
     border-bottom: #2b2a2a solid 1px;
-
 }
 
 main {
     display: grid;
-    grid-template-columns: .5fr 4fr;
+    grid-template-columns: 0.5fr 4fr;
     height: calc(100% - 70px);
 }
 
 aside {
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     border-right: 1px solid #2b2a2a;
 }
 
 #task-container {
-    padding: .5em 1em;
+    padding: 0.5em 1em;
 }
 
 #sidebar-header,
@@ -100,7 +108,7 @@ aside {
     height: 40px;
     border-radius: 100%;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.8em;
     /*Center "+" */
     display: flex;
     justify-content: center;
@@ -109,7 +117,6 @@ aside {
 
 #projects-list {
     margin-top: 1em;
-
 }
 
 #projects-list li {
@@ -123,13 +130,12 @@ aside {
     text-align: left;
     border-radius: 8px;
     background-color: transparent;
-    padding: .2em 1em;
+    color: #2b2a2a;
+    padding: 0.2em 1em;
 }
-
 .project-button:hover {
-    background-color: #f1f1f1;
+    background-color: #dfdfdf;
 }
-
 dialog {
     margin: auto;
     padding: 1em;
@@ -149,12 +155,8 @@ dialog form {
     height: 30px;
     border-radius: 100%;
     border: none;
-    background-color: rgb(14, 4, 145);
-    color: #fff;
-}
 
-.modal-button-container button:hover {
-    background-color: rgb(12, 6, 100);
+    color: #fff;
 }
 
 .info-label {
@@ -162,7 +164,7 @@ dialog form {
 }
 
 .submit-btn {
-    margin-top: .5em;
+    margin-top: 0.5em;
     width: 100px;
 }
 
@@ -174,7 +176,6 @@ dialog form {
     border-left: 8px solid;
     border-radius: 10px;
     margin: 1em 0;
-
 }
 
 .task-main-section {
@@ -183,7 +184,6 @@ dialog form {
     grid-template-columns: 1fr 1fr 100px;
     align-items: center;
     min-height: 50px;
-
 }
 
 .task-name-group {
@@ -195,9 +195,12 @@ dialog form {
     height: 20px;
     border-radius: 100%;
     border: none;
-    margin-right: .5em;
+    margin-right: 0.5em;
     background-color: transparent;
     border: 2px solid #2b2a2a;
+}
+.toggle-task-status-btn:hover {
+    background-color: #12b04a;
 }
 
 .checked {
@@ -235,5 +238,5 @@ dialog form {
 }
 
 .task-description {
-   width: 100%;
+    width: 100%;
 }

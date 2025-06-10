@@ -93,36 +93,6 @@ const task = (function () {
         };
     };
 
-    //   // Testing
-    //   let newTask = createTask(
-    //     "Work",
-    //     "Code Again",
-    //     "some cool desc",
-    //     "2025-10-2",
-    //     "High",
-    //     false
-    //   );
-    //   let newTask2 = createTask(
-    //     "Garden",
-    //     "Plant Some Stuff",
-    //     "some cool desc some cool desc some cool desc some cool descsome cool descsome cool desc",
-    //     "2025-06-4",
-    //     "Medium",
-    //     false
-    //   );
-    //   let newTask3 = createTask(
-    //     "Work",
-    //     "Code Again Again!",
-    //     "some cool desc",
-    //    "2025-06-4",
-    //     "Low",
-    //     false
-    //   );
-
-    //   newTask.addTaskToProject(newTask);
-    //   newTask2.addTaskToProject(newTask2);
-    //   newTask3.addTaskToProject(newTask3);
-
     return { createTask };
 })();
 

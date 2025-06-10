@@ -1,5 +1,4 @@
 export let listOfProjects = [];
-import { localStorageHelper } from "./storage";
 
 const project = (function () {
     const createProject = (name) => {
@@ -17,17 +16,7 @@ const project = (function () {
 
     // Create default project for all tasks.
     const defaultProject = createProject("All");
-    // addProjectToListOfProjects(defaultProject);
-    listOfProjects.push(defaultProject);
-
-    //   // Testing
-    //   const testProject2 = createProject("Work");
-
-    //   const testProject3 = createProject("Garden");
-
-    //   addProjectToListOfProjects(testProject2);
-    //   addProjectToListOfProjects(testProject3);
-    //   console.log(...listOfProjects);
+    addProjectToListOfProjects(defaultProject);
 
     return { createProject, addProjectToListOfProjects };
 })();

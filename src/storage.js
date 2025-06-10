@@ -49,17 +49,12 @@ const localStorageHelper = (function () {
                 //add project to listOfProjects
                 project.addProjectToListOfProjects(newProject);
             }
-            if (listOfProjects.includes(newTodo.getProjectName())) {
-                // Recreate the project (To reinstate functions)
-                let newProject = project.createProject(todo.projectName);
-                //add project to listOfProjects
-                project.addProjectToListOfProjects(newProject);
-            }
 
             // Add task to project
             newTodo.addTaskToProject(newTodo);
         });
     };
+
     return {
         saveToLocalStorage,
         retrieveDataFromLocalStorage,

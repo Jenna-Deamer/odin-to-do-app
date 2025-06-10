@@ -1,147 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Yet Another To-Do App</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yet Another To-Do App</title>
-</head>
+    <body>
+        <header>
+            <h1>Odin - To-Do App</h1>
+        </header>
+        <main>
+            <aside>
+                <div id="sidebar-header">
+                    <h2>Projects</h2>
+                    <button id="create-project-btn">+</button>
+                </div>
 
-<body>
-    <header>
-        <h1>Odin - To-Do App</h1>
+                <ul id="projects-list"></ul>
+            </aside>
 
-    </header>
-    <main>
-        <aside>
-            <div id="sidebar-header">
-                <h2>Projects</h2>
-                <button id="create-project-btn">+</button>
+            <div id="task-container">
+                <div id="task-header">
+                    <h3 id="current-project-label"></h3>
+
+                    <button id="create-task-btn">Add Task</button>
+                </div>
+
+                <div>
+                    <ul id="incomplete-task-list"></ul>
+                </div>
+                <div>
+                    <h3>Complete</h3>
+                    <ul id="complete-task-list"></ul>
+                </div>
+            </div>
+        </main>
+
+        <dialog id="create-project-modal">
+            <div class="modal-button-container">
+                <button id="close-project-modal-btn">X</button>
             </div>
 
-            <ul id="projects-list">
+            <h2>Create Project</h2>
+            <p id="info-label-project" class="info-label"></p>
+            <form>
+                <fieldset>
+                    <label for="project-name">Name:</label>
+                    <input type="text" id="project-name" form="project-name" />
+                </fieldset>
 
-            </ul>
-        </aside>
+                <button type="submit" class="submit-btn">Create</button>
+            </form>
+        </dialog>
 
-        <div id="task-container">
-            <div id="task-header">
-                <h3 id="current-project-label"></h3>
-
-                <button id="create-task-btn">Add To-Do</button>
-
+        <dialog id="create-task-modal">
+            <div class="modal-button-container">
+                <button id="close-task-modal-btn">X</button>
             </div>
 
-            <div>
-                <ul id="incomplete-task-list"></ul>
+            <h2>Create Task</h2>
+            <p id="info-label-task" class="info-label"></p>
+            <form>
+                <fieldset>
+                    <label for="task-name">Name:</label>
+                    <input
+                        type="text"
+                        id="task-name"
+                        form="task-name"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <label>Project:</label>
+                    <select
+                        id="task-project-name"
+                        name="task-project-name"
+                    ></select>
+                </fieldset>
+                <fieldset>
+                    <label>Due Date:</label>
+                    <input
+                        type="date"
+                        id="task-due-date"
+                        fom="task-due-date"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <label for="task-priority">Priority:</label>
+                    <select id="task-priority" name="task-priority" required>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">low</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label>Description:</label>
+                    <input
+                        type="text"
+                        id="task-description"
+                        form="task-description"
+                        required
+                    />
+                </fieldset>
+
+                <button type="submit" class="submit-btn">Create</button>
+            </form>
+        </dialog>
+
+        <dialog id="edit-task-modal">
+            <div class="modal-button-container">
+                <button id="close-edit-task-modal-btn">X</button>
             </div>
-            <div>
-                <h3>Complete</h3>
-                <ul id="complete-task-list"></ul>
-            </div>
-        </div>
-    </main>
 
-    <dialog id="create-project-modal">
-        <div class="modal-button-container">
-            <button id="close-project-modal-btn">X</button>
-        </div>
+            <h2>Edit Task</h2>
+            <p id="info-label-edit-task" class="info-label"></p>
+            <form>
+                <fieldset>
+                    <label for="task-name">Name:</label>
+                    <input
+                        type="text"
+                        id="edit-task-name"
+                        form="task-name"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <label>Project:</label>
+                    <select
+                        id="edit-task-project-name"
+                        name="task-project-name"
+                    ></select>
+                </fieldset>
+                <fieldset>
+                    <label>Due Date:</label>
+                    <input
+                        type="date"
+                        id="edit-task-due-date"
+                        fom="task-due-date"
+                        required
+                    />
+                </fieldset>
+                <fieldset>
+                    <label for="task-priority">Priority:</label>
+                    <select
+                        id="edit-task-priority"
+                        name="task-priority"
+                        required
+                    >
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">low</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label>Description:</label>
+                    <input
+                        type="text"
+                        id="edit-task-description"
+                        form="task-description"
+                        required
+                    />
+                </fieldset>
 
-        <h2>Create Project</h2>
-        <p id="info-label-project" class="info-label"></p>
-        <form>
-            <fieldset>
-                <label for="project-name">Name:</label>
-                <input type="text" id="project-name" form="project-name">
-            </fieldset>
-
-            <button type="submit" class="submit-btn">Create</button>
-
-
-        </form>
-    </dialog>
-
-    <dialog id="create-task-modal">
-        <div class="modal-button-container">
-            <button id="close-task-modal-btn">X</button>
-        </div>
-
-        <h2>Create Task</h2>
-        <p id="info-label-task" class="info-label"></p>
-        <form>
-            <fieldset>
-                <label for="task-name">Name:</label>
-                <input type="text" id="task-name" form="task-name" required>
-            </fieldset>
-            <fieldset>
-                <label>Project:</label>
-                <select id="task-project-name" name="task-project-name"></select>
-            </fieldset>
-            <fieldset>
-                <label>Due Date:</label>
-                <input type="date" id="task-due-date" fom="task-due-date" required>
-            </fieldset>
-            <fieldset>
-                <label for="task-priority">Priority:</label>
-                <select id="task-priority" name="task-priority" required>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">low</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <label>Description:</label>
-                <input type="text" id="task-description" form="task-description" required>
-            </fieldset>
-
-
-            <button type="submit" class="submit-btn">Create</button>
-
-
-        </form>
-    </dialog>
-
-
-    <dialog id="edit-task-modal">
-        <div class="modal-button-container">
-            <button id="close-edit-task-modal-btn">X</button>
-        </div>
-
-        <h2>Edit Task</h2>
-        <p id="info-label-edit-task" class="info-label"></p>
-        <form>
-            <fieldset>
-                <label for="task-name">Name:</label>
-                <input type="text" id="edit-task-name" form="task-name" required>
-            </fieldset>
-            <fieldset>
-                <label>Project:</label>
-                <select id="edit-task-project-name" name="task-project-name"></select>
-            </fieldset>
-            <fieldset>
-                <label>Due Date:</label>
-                <input type="date" id="edit-task-due-date" fom="task-due-date" required>
-            </fieldset>
-            <fieldset>
-                <label for="task-priority">Priority:</label>
-                <select id="edit-task-priority" name="task-priority" required>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">low</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <label>Description:</label>
-                <input type="text" id="edit-task-description" form="task-description" required>
-            </fieldset>
-
-
-            <button type="submit" class="submit-btn">Save</button>
-
-
-        </form>
-    </dialog>
-
-</body>
-
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+        </dialog>
+    </body>
 </html>

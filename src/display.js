@@ -53,6 +53,9 @@ const displayProjectsAndTasks = (function () {
             // verify form data
             if (!projectNameField.value) {
                 projectFormInfoLabel.textContent = "Please enter a name";
+            } else if (listOfProjects.includes(projectNameField.value)) {
+                console.log("I made it");
+                projectFormInfoLabel.textContent = "Project name arealdy inuse";
             } else {
                 // create project
                 let name = projectNameField.value;
